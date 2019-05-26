@@ -88,10 +88,11 @@ void draw() {
     text("increase/decrease chaos : press -/+", 10, height - 10);
   }
   if (mode == "lissajous") {
-    text("phaseA = " + phaseA, 10, height - 85);
-    text("phaseB = " + phaseB, 10, height - 70);
-    text("freqA = " + round(freqA*100), 10, height - 55);
-    text("freqB = " + round(freqB*100), 10, height - 40);
+    text("phaseA = " + phaseA, 10, height - 100);
+    text("phaseB = " + phaseB, 10, height - 85);
+    text("freqA = " + round(freqA*100), 10, height - 70);
+    text("freqB = " + round(freqB*100), 10, height - 55);
+    text("increase/decrease phases : press arrows", 10, height - 40);
     text("increase/decrease freqA : press i/d", 10, height - 25);
     text("increase/decrease freqB : press -/+", 10, height - 10);
   }
