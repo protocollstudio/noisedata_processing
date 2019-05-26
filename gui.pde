@@ -1,3 +1,4 @@
+// TODO factory design pattern for Panels
 class Gui {
     ArrayList<Panel> panels;
     
@@ -10,10 +11,11 @@ class Gui {
     }
 }
 
+// display a window
 class Panel {
-   float x, y, w, h;
+   float x, y, w, h; // origin of the window doesn't include the title bar.
    String title;
-   String address;
+   String address; // osc address
    
    Panel(String aTitle, float aX, float aY, float aW, float aH) {
      title = aTitle;
@@ -21,7 +23,7 @@ class Panel {
      y = aY;
      w = aW;
      h = aH;
-     address = "/" + title;
+     address = "/" + title; // use panel title to define osc address
    }
    
    void display() {

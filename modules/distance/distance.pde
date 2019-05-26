@@ -15,20 +15,19 @@ float angle, radius;
 float x, y;
 float longest;
 float posX, posY;
-// Lissajous mode
+String mode;
+// Noise mode variables
 float inc, step, speed;
+// Lissajous mode variables
 float freqA = 0.5, freqB = 0.7;
 float signalA, signalB;
 float phaseA = 0, phaseB = 0;
-String mode;
 
 void setup() {
   size(800, 600);
   foreground = 50;
   background = 240;
   nbNodes = 1;
-  nodes = new Node[nbNodes];
-  angle = -PI/2; // noeud zéro à midi
   // adapter la figure à la résolution
   if (width > height) {
     radius = (height - height/5)/2;
@@ -36,13 +35,7 @@ void setup() {
     radius = (width - width/5)/2;
   }
   // initialisation des coordonnées de noeuds
-  for (int i = 0; i < nbNodes; i++) {
-    x = cos(angle) * radius;
-    y = sin(angle) * radius;
-    nodes[i] = new Node(i, x + width/2, y + height/2);
-    angle += TWO_PI / nbNodes;
-  }
-  longest = radius * 2 - radius / 5; // distance à partir de laquelle un noeud est égal à 0%
+  createNodes();
 
   // NOISE MODE
   inc = 0;
@@ -54,7 +47,6 @@ void setup() {
   // OSC SETUP
   osc = new OscP5(this, 4444);
   remote = new NetAddress("127.0.0.1", 7777);
-  messages = new OscMessage[nbNodes];
 }
 
 void draw() {
