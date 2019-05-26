@@ -1,2 +1,2 @@
 # noisedata
-Collection of graphics modules which send OSC.
+Collection of OSC graphics modules.
