@@ -1,3 +1,4 @@
+// import de oscP5
 import oscP5.*;
 import netP5.*;
 
@@ -6,13 +7,15 @@ NetAddress remote;
 
 OscMessage[] messages;
 
+// variables globales
+int foreground, background; // pour changer de thème
 int nbNodes;
 Node[] nodes;
 float angle, radius;
 float x, y;
 float longest;
-int foreground, background;
 float posX, posY;
+// Lissajous mode
 float inc, step, speed;
 float freqA = 0.5, freqB = 0.7;
 float signalA, signalB;
@@ -25,24 +28,27 @@ void setup() {
   background = 240;
   nbNodes = 1;
   nodes = new Node[nbNodes];
-  angle = -PI/2;
+  angle = -PI/2; // noeud zéro à midi
+  // adapter la figure à la résolution
   if (width > height) {
     radius = (height - height/5)/2;
   } else {
     radius = (width - width/5)/2;
   }
+  // initialisation des coordonnées de noeuds
   for (int i = 0; i < nbNodes; i++) {
     x = cos(angle) * radius;
     y = sin(angle) * radius;
     nodes[i] = new Node(i, x + width/2, y + height/2);
     angle += TWO_PI / nbNodes;
   }
-  longest = radius * 2 - radius / 5;
+  longest = radius * 2 - radius / 5; // distance à partir de laquelle un noeud est égal à 0%
 
   // NOISE MODE
   inc = 0;
   step = 0.10;
   speed = 1;
+  // mode par défaut
   mode = "mouse";
 
   // OSC SETUP
