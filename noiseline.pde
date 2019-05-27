@@ -7,9 +7,9 @@ class NoiseLine extends Panel {
   private int[] noiseCurve;
   private OscMessage m;
 
-  NoiseLine(String title, float x, float y, float w, float h) {
-    super(title, x, y, w, h);
-    nbPoints = 200;
+  NoiseLine(String title, float aX, float aY, float aW, float aH) {
+    super(title, aX, aY, aW, aH);
+    nbPoints = 50;
     noiseFactor = 0;
     step = 0.02;
     noiseStart = 0;
