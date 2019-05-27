@@ -12,9 +12,9 @@ void keyPressed() {
   c.y = constrain(c.y, 0, height-cellSize);
 
   // handle states
-  if (key == '1') {state = 1; }
-  if (key == '2') {state = 2; }
-  if (key == '3') {state = 3; }
-  if (key == '4') {state = 4; }
-  if (key == '5') {state = 5; }
+  if (key == '1') { state = 1; }
+  if (key == '2') { state = 2; }
+  if (key == '3') { state = 3; }
+  if (key == '4') { state = 4; }
+  if (key == '5') { state = 5; }
 }

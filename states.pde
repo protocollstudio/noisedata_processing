@@ -7,8 +7,10 @@ void states(int state) {
         b1.run();
         break;
     case 3 :
-        state = 3;
         b2.run();
+        break;
+    case 4 : 
+        d.run();
         break;
     }
 }
