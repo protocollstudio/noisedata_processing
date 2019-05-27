@@ -1,7 +1,7 @@
 class Distance extends Panel {
 
     String address;
-    private OscMessage m;
+    private OscMessage[] messages;
     // add global variables of your sketch here 
     int fg, bg; // foreground and background colors
     int nbNodes;
@@ -28,7 +28,7 @@ class Distance extends Panel {
             radius = (w - w / 5) / 2;
         }
         // initialize noise mode variables
-        inc =0;
+        inc = 0;
         step = 0.10;
         speed = 1;
         // initialize lissajous mode variables
@@ -50,17 +50,37 @@ class Distance extends Panel {
         push();
         display();
         // insert your sketch draw function here
-
         ellipseMode(CENTER);
         modes();
-
+        for (int i = 0; i < nbNodes; i++) {
+            stroke(fg);
+            line(nodes[i].x, nodes[i].y, cursorX, cursorY); //display lines
+            nodes[i].display(); // display nodes
+            // display bars and percentages
+            fill(fg);
+            rect(10, i * 10 + 10, map(nodes[i].value, 0, longest, 0, 50), 5);
+            textSize(8);
+            float gui_value = round(map(nodes[i].value, 0, longest, 0, 1000));
+            text(gui_value + "%", 63, i * 10 + 16);
+        }
+        // display cursor
+        stroke(fg);
+        fill(bg);
+        ellipse(cursorX, cursorY, 15, 15);
+        // noise factor
+        inc += step;
         pop();
     }
 
     void send() {
-        m = new OscMessage(address);
-        m.add();
-        osc.send(m, remote);
+        for (int i = 0; i < nbNodes; i++) {
+            // each node send an osc message on a different address based on node number
+            messages[i] = new OscMessage("/node" + i);
+            /* each message is a float between 0 and 1 proportional to the distance
+            between the node and the cursor */
+            messages[i].add(norm(nodes[i].value, 0, longest));
+            osc.send(messages[i], remote);
+        }
     }
 
     void createNodes() {
@@ -123,32 +143,32 @@ class Distance extends Panel {
         cursor();
         signalA = sin(radians(freqA * frameCount + phaseA));
         signalB = cos(radians(freqB * frameCount + phaseB));
-        cursorX = signalA * radius + w/2;
-        cursorY = signalB * radius + h/2;
-    }
-}
-
-class Node {
-    float x, y, value;
-    int n;
-
-    Node(int aNumber, float aX, float aY) {
-        n = aNumber;
-        x = aX;
-        y = aY;
+        cursorX = signalA * radius + w / 2;
+        cursorY = signalB * radius + h / 2;
     }
 
-    void display() {
-        push();
-        noStroke();
-        fill(fg);
-        ellipse(x, y, 25, 25);
-        value = constrain(longest - dist(x, y, aX, aY), 0, longest);
-        float arcSize = map(value, 0, longest, 0, TWO_PI);
-        fill(fg, 100);
-        textSize(10);
-        textAlign(CENTER);
-        text(n, x, y + 4);
-        pop();
+    class Node {
+        float x, y, value;
+        int n;
+
+        Node(int aNumber, float aX, float aY) {
+            n = aNumber;
+            x = aX;
+            y = aY;
+        }
+
+        void display() {
+            push();
+            noStroke();
+            fill(fg);
+            ellipse(x, y, 25, 25);
+            value = constrain(longest - dist(x, y, cursorX, cursorY), 0, longest);
+            float arcSize = map(value, 0, longest, 0, TWO_PI);
+            fill(fg, 100);
+            textSize(10);
+            textAlign(CENTER);
+            text(n, x, y + 4);
+            pop();
+        }
     }
 }
