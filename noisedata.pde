@@ -6,6 +6,7 @@ NetAddress remote;
 
 Pointer c;
 int cellSize = 20;
+int state = 1;
 
 // Panel examples
 NoiseLine n;
@@ -24,8 +25,8 @@ void setup() {
   remote = new NetAddress("127.0.0.1", 7777); // send on port 7777
 
   // Module(title, x position, y position, width, height)
-  n = new NoiseLine("noise1", 1, 2, 20, 10);
-  b1 = new Ball("gate1", 1, 24, 10, 10);
+        n = new NoiseLine("noise1", 1, 2, 20, 10);
+        b1 = new Ball("gate1", 1, 24, 10, 10);
   b2 = new Ball("gate2", 12, 14, 20, 10);
   b2.radius = 15; // radius of the Ball is public
 }
@@ -33,10 +34,7 @@ void setup() {
 void draw() {
   background(0);
   grid();
-  // run function include rendering the window and osc messages sending
-  n.run();
-  b1.run();
-  b2.run();
+  states(state);
   c.display();
 }
 
@@ -65,18 +63,6 @@ class Pointer {
    }
 }
 
-void keyPressed() {
-  if (key == 'h') { c.x -= cellSize; }
-  if (key == 'j') { c.y += cellSize; }
-  if (key == 'k') { c.y -= cellSize; }
-  if (key == 'l') { c.x += cellSize; }
-  if (keyCode == UP) { c.y -= cellSize * 10; }
-  if (keyCode == RIGHT) { c.x += cellSize * 10; }
-  if (keyCode == DOWN) { c.y += cellSize * 10; }
-  if (keyCode == LEFT) { c.x -= cellSize * 10; }
-  c.x = constrain(c.x, 0, width-cellSize);
-  c.y = constrain(c.y, 0, height-cellSize);
-}
 
 // useful
 void push() {
