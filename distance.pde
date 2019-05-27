@@ -8,6 +8,7 @@ class Distance extends Panel {
     Node[] nodes;
     float radius, angle; // variables for creating nodes
     float longest; // maximum length between a node and cursor ot make it equal to zero
+    String mode;
     float cursorX, cursorY; // position of the cursor
     float inc, step, speed; // noise mode variables
     // lissajous mode variable
@@ -49,6 +50,7 @@ class Distance extends Panel {
         push();
         display();
         // insert your sketch draw function here
+
         ellipseMode(CENTER);
         modes();
 
@@ -122,7 +124,7 @@ class Distance extends Panel {
         signalA = sin(radians(freqA * frameCount + phaseA));
         signalB = cos(radians(freqB * frameCount + phaseB));
         cursorX = signalA * radius + w/2;
-        cursorY = signalB * radius + h/2;//TODO
+        cursorY = signalB * radius + h/2;
     }
 }
 
@@ -133,7 +135,7 @@ class Node {
     Node(int aNumber, float aX, float aY) {
         n = aNumber;
         x = aX;
-        y = aY
+        y = aY;
     }
 
     void display() {
