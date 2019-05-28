@@ -19,7 +19,7 @@ class Distance extends Panel {
     // insert your sketch setup here 
     fg = 255;
     bg = 0;
-    nbNodes = 6;
+    nbNodes = 12;
     // initialize noise mode variables
     inc = 0;
     step = 0.10;
@@ -52,17 +52,18 @@ class Distance extends Panel {
       // display bars and percentages
       noStroke();
       fill(fg);
-      rect(10, i * 10 + 10, map(nodes[i].value, 0, longest, 0, 50), 5);
-      textSize(8);
-      float gui_value = round(map(nodes[i].value, 0, longest, 0, 1000));
-      text(gui_value + "%", 63, i * 10 + 16);
+      rect(20, i * 19 + 17, map(nodes[i].value, 0, longest, 0, 100), 10);
+      textSize(14);
+      float gui_value = (round(map(nodes[i].value, 0, longest, 0, 1000))) / 10;
+      text(gui_value + "%", 123, i * 19 + 27);
     }
     // display cursor
     stroke(fg);
     fill(bg);
-    ellipse(cursorX, cursorY, 15, 15);
+    ellipse(cursorX, cursorY, 20, 20);
     // noise factor
     inc += step;
+    instructions();
     pop();
   }
 
@@ -145,6 +146,35 @@ class Distance extends Panel {
     cursorY = signalB * radius + h / 2;
   }
 
+  void instructions() {
+    textSize(10);
+    fill(fg);
+    if (mode == "noise") {
+      text("energy = " + round(speed*10), 10, h - 55);
+      text("chaos = " + round(step*100), 10, h - 40);
+      text("increase/decrease energy : press i/d", 10, h - 25);
+      text("increase/decrease chaos : press -/+", 10, h - 10);
+    }
+    if (mode == "lissajous") {
+      text("phaseA = " + phaseA, 10, h - 100);
+      text("phaseB = " + phaseB, 10, h - 85);
+      text("freqA = " + round(freqA*100), 10, h - 70);
+      text("freqB = " + round(freqB*100), 10, h - 55);
+      text("increase/decrease phases : press arrows", 10, h - 40);
+      text("increase/decrease freqA : press i/d", 10, h - 25);
+      text("increase/decrease freqB : press -/+", 10, h - 10);
+    }
+    push();
+    textAlign(RIGHT);
+    text("add/remove node : press a/r", w - 10, h - 70);
+    text("change theme : press c", w - 10, h - 55);
+    text("lissajous mode : press l", w - 10, h - 40);
+    text("noise mode : press n", w - 10, h - 25);
+    text("mouse mode : press m", w - 10, h - 10);
+    inc += step;
+    pop();
+  }
+
   class Node {
     float x, y, value;
     int n;
@@ -159,15 +189,15 @@ class Distance extends Panel {
       push();
       noStroke();
       fill(fg);
-      ellipse(x, y, 25, 25);
+      ellipse(x, y, 40, 40);
       value = constrain(longest - dist(x, y, cursorX, cursorY), 0, longest);
       float arcSize = map(value, 0, longest, 0, TWO_PI);
       fill(fg, 100);
-      arc(x, y, 35, 35, PI/2, arcSize+PI/2);
+      arc(x, y, 60, 60, PI/2, arcSize+PI/2);
       fill(bg);
-      textSize(10);
+      textSize(19);
       textAlign(CENTER);
-      text(n, x, y + 4);
+      text(n, x, y + 7);
       pop();
     }
   }
