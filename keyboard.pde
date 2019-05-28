@@ -63,15 +63,20 @@ void keyPressed() {
   if (key == 'l' || key == 'L') {
     distance.mode = "lissajous";
   }
-   if (distance.mode == "lissajous") {
-      distance.freqB += 0.01;
-    }
   if (key == '-') {
     if (distance.mode == "noise") {
       distance.step -= 0.01;
     }
     if (distance.mode == "lissajous") {
       distance.freqB -= 0.01;
+    }
+  }
+  if (key == '+') {
+    if (distance.mode == "noise") {
+      distance.step += 0.01;
+    }
+    if (distance.mode == "lissajous") {
+      distance.freqB += 0.01;
     }
   }
   if (key == 'i' || key == 'I') {

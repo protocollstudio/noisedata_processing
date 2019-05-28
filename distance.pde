@@ -19,7 +19,7 @@ class Distance extends Panel {
     // insert your sketch setup here 
     fg = 255;
     bg = 0;
-    nbNodes = 12;
+    nbNodes = 1;
     // initialize noise mode variables
     inc = 0;
     step = 0.10;
