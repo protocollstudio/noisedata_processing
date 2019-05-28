@@ -7,7 +7,7 @@ NetAddress remote;
 PFont font;
 
 Pointer c;
-int cellSize = 20;
+int cellSize = 10;
 int state;
 
 // Panel examples
@@ -31,7 +31,7 @@ void setup() {
   gate1 = new Ball("gate1", 80, 22, 14, 14);
   gate2 = new Ball("gate2", 80, 39, 25, 15);
   gate2.radius = 15; // radius of the Ball is public
-  distance = new Distance("drones", 2, 4, 50, 30);
+  distance = new Distance("drones", 2, 4, 100, 60);
 
 
   // OSC setup
@@ -41,9 +41,9 @@ void setup() {
 
 void draw() {
   background(0);
-  grid();
+  
   states(state);
-  c.display();
+  //c.display();
 }
 
 // useful
