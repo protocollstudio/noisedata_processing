@@ -2,9 +2,11 @@
 
 void states(int state) {
   switch (state) { 
+  case 0 :
+    break;
   case 1 : 
 
-    line.run();
+    line1.run();
     break;
   case 2 : 
 
@@ -16,12 +18,12 @@ void states(int state) {
   case 4 : 
     distance.run();
     break;
-  
+
   case 5 : 
     distance.run();
     gate1.run();
     gate2.run();
-    line.run();
+    line1.run();
     break;
   }
 }

@@ -188,7 +188,6 @@ class Distance extends Panel {
 
     void display() {
       push();
-      println("radius = " + radius);
       noStroke();
       fill(fg);
       ellipse(x, y, radius/10, radius/10); // size proportional to radius

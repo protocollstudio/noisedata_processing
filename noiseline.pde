@@ -1,4 +1,4 @@
-class NoiseLine extends Panel {
+class Line extends Panel {
 
   int nbPoints;
   float noiseFactor;
@@ -7,7 +7,7 @@ class NoiseLine extends Panel {
   private int[] noiseCurve;
   private OscMessage m;
 
-  NoiseLine(String title, float aX, float aY, float aW, float aH) {
+  Line(String title, float aX, float aY, float aW, float aH) {
     super(title, aX, aY, aW, aH);
     nbPoints = 50;
     noiseFactor = 0;

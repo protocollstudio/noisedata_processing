@@ -11,7 +11,7 @@ int cellSize = 10;
 int state;
 
 // Panel examples
-NoiseLine line;
+Line line1;
 Ball gate1, gate2;
 Distance distance;
 
@@ -27,9 +27,9 @@ void setup() {
   state = 4; // starting scene
   
   // Module(title, x position, y position, width, height)
-  line = new NoiseLine("noise1", 80, 4, 20, 15);
-  gate1 = new Ball("gate1", 80, 22, 14, 14);
-  gate2 = new Ball("gate2", 80, 39, 25, 15);
+  line1 = new Line("noise1", 105, 4, 20, 15);
+  gate1 = new Ball("gate1", 105, 22, 14, 14);
+  gate2 = new Ball("gate2", 105, 39, 25, 15);
   gate2.radius = 15; // radius of the Ball is public
   distance = new Distance("drones", 2, 4, 100, 60);
 
