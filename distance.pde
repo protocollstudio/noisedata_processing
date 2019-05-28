@@ -44,12 +44,13 @@ class Distance extends Panel {
     display();
     // insert your sketch draw function here
     ellipseMode(CENTER);
-    modes();
+    modes(); // select between mouse/noise/lissajous modes
     for (int i = 0; i < nbNodes; i++) {
       stroke(fg);
       line(nodes[i].x, nodes[i].y, cursorX, cursorY); //display lines
       nodes[i].display(); // display nodes
       // display bars and percentages
+      noStroke();
       fill(fg);
       rect(10, i * 10 + 10, map(nodes[i].value, 0, longest, 0, 50), 5);
       textSize(8);
@@ -87,9 +88,9 @@ class Distance extends Panel {
     }
     // dispatch the nodes on a circle
     for (int i = 0; i < nbNodes; i++) {
-      x = cos(angle) * radius;
-      y = sin(angle) * radius;
-      nodes[i] = new Node(i, x + w / 2, y + h / 2);
+      float posX = cos(angle) * radius;
+      float posY = sin(angle) * radius;
+      nodes[i] = new Node(i, posX + w / 2, posY + h / 2);
       angle += TWO_PI / nbNodes;
     }
     // determinate the value from which a node equal to zero
