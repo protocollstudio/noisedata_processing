@@ -19,14 +19,14 @@ class Distance extends Panel {
     // insert your sketch setup here 
     fg = 255;
     bg = 0;
-    nbNodes = 1;
+    nbNodes = 6;
     // initialize noise mode variables
     inc = 0;
     step = 0.10;
     speed = 1;
     // initialize lissajous mode variables
-    freqA = 0.2;
-    freqB = 0.3;
+    freqA = 1.2;
+    freqB = 1.5;
     phaseA = 0;
     phaseB = 0;
     // default mode
@@ -52,15 +52,16 @@ class Distance extends Panel {
       // display bars and percentages
       noStroke();
       fill(fg);
-      rect(20, i * 19 + 17, map(nodes[i].value, 0, longest, 0, 100), 10);
-      textSize(14);
+      float barSize = radius / 10;
+      rect(barSize, i * barSize/2 + barSize, map(nodes[i].value, 0, longest, 0, 100), barSize/3);
+      textSize(barSize/2);
       float gui_value = (round(map(nodes[i].value, 0, longest, 0, 1000))) / 10;
-      text(gui_value + "%", 123, i * 19 + 27);
+      text(gui_value + "%", 100 + barSize, i * barSize/2 + barSize + barSize/3);
     }
     // display cursor
     stroke(fg);
     fill(bg);
-    ellipse(cursorX, cursorY, 20, 20);
+    ellipse(cursorX, cursorY, radius/10, radius/10); // size proportional to radius
     // noise factor
     inc += step;
     instructions();
@@ -187,17 +188,18 @@ class Distance extends Panel {
 
     void display() {
       push();
+      println("radius = " + radius);
       noStroke();
       fill(fg);
-      ellipse(x, y, 40, 40);
+      ellipse(x, y, radius/10, radius/10); // size proportional to radius
       value = constrain(longest - dist(x, y, cursorX, cursorY), 0, longest);
       float arcSize = map(value, 0, longest, 0, TWO_PI);
       fill(fg, 100);
-      arc(x, y, 60, 60, PI/2, arcSize+PI/2);
+      arc(x, y, radius/6, radius/6, PI/2, arcSize+PI/2); // size proportional to radius
       fill(bg);
-      textSize(19);
+      textSize(radius/20); // size proportional to radius
       textAlign(CENTER);
-      text(n, x, y + 7);
+      text(n, x, y + radius/60); // size proportional to radius
       pop();
     }
   }
