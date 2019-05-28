@@ -15,10 +15,10 @@ class NoiseLine extends Panel {
     noiseStart = 0;
     noiseCurve = new int[nbPoints];
   }
-  
+
   void run() {
-     render();
-     send();
+    render();
+    send();
   }
 
   private void render() {
@@ -32,14 +32,16 @@ class NoiseLine extends Panel {
       noiseFactor += step;
     }
     beginShape();
+    curveVertex(-(w / nbPoints), noiseCurve[0]);
     for (int i = 0; i < nbPoints; i++) {
       float posX = i * (w / nbPoints);
       float posY = noiseCurve[i];
       curveVertex(posX, posY);
     }
+    curveVertex(w, noiseCurve[nbPoints-1]);
+    endShape();
     noiseStart += step;
     noiseFactor = noiseStart;
-    endShape();
     stroke(150);
     line(0, noiseCurve[nbPoints-1], w, noiseCurve[nbPoints-1]);
     pop();

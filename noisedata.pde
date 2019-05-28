@@ -26,8 +26,8 @@ void setup() {
   remote = new NetAddress("127.0.0.1", 7777); // send on port 7777
 
   // Module(title, x position, y position, width, height)
-  d = new Distance("drones", 1, 1, 50, 40);
-  n = new NoiseLine("noise1", 1, 1, 20, 10);
+  d = new Distance("drones", 90, 40, 50, 40);
+  n = new NoiseLine("noise1", 1, 2, 40, 30);
   b1 = new Ball("gate1", 1, 24, 10, 10);
   b2 = new Ball("gate2", 12, 14, 20, 10);
   b2.radius = 15; // radius of the Ball is public
