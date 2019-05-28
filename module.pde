@@ -1,5 +1,4 @@
-// empty module
-
+// empty example module
 class Module extends Panel{
   
   String address;

@@ -1,44 +1,52 @@
+// Module : bouncing ball 
 class Ball extends Panel {
   
-  PVector pos, vel;
+  PVector position, velocity;
   float radius = 10;
-  private OscMessage m;
+  private OscMessage oscMessage;
   private int hit;
 
   Ball(String title, float aX, float aY, float aW, float aH) {
     super(title, aX, aY, aW, aH);
-    pos = new PVector(w/2, h/2);
-    vel = new PVector(random(2, 6), random(2,6));
+    position = new PVector(panelW/2, panelH/2);
+    velocity = new PVector(random(2, 6), random(2,6));
   }
 
   void run() {
+    push();
+    display();
     render();
-    send();
+    pop();
+    send(hit);
   }
 
   private void render() {
-    push();
-    display();
+    
+    // draw the ball
     noFill();
     stroke(255);
     ellipseMode(CENTER);
-    ellipse(pos.x, pos.y, radius*2, radius*2);
+    ellipse(position.x, position.y, radius * 2, radius * 2);
     hit = 0;
-    pos.add(vel);
-    if (pos.x - radius < 0 || pos.x + radius > w) {
+    
+    // move the ball
+    position.add(velocity);
+    
+    // when it hits the border
+    if (position.x - radius < 0 || position.x + radius > panelW) {
       hit = 1;
-      vel.x *= -1;
+      velocity.x *= -1;
     }
-    if (pos.y + radius > h || pos.y - radius < 0) { 
+    if (position.y + radius > panelH || position.y - radius < 0) { 
       hit = 1;
-      vel.y *= -1;
+      velocity.y *= -1;
     }
-    pop();
   }
 
-  private void send() {
-    m = new OscMessage(address);
-    m.add(hit);
-    osc.send(m, remote);
+  // ... to be abstracted in OSC layer
+  private void send(int information) {
+    oscMessage = new OscMessage(address);
+    oscMessage.add(information);
+    osc.send(oscMessage, remote); 
   }
 }

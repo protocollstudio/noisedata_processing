@@ -1,3 +1,4 @@
+// Module : circular multi points at equal distances 
 class Distance extends Panel {
 
   private OscMessage[] messages;
@@ -35,13 +36,15 @@ class Distance extends Panel {
   }
 
   void run() {
+    push();
+    display();
     render();
+    pop();
     send();
   }
 
   private void render() {
-    push();
-    display();
+
     // insert your sketch draw function here
     ellipseMode(CENTER);
     modes(); // select between mouse/noise/lissajous modes
@@ -65,7 +68,6 @@ class Distance extends Panel {
     // noise factor
     inc += step;
     instructions();
-    pop();
   }
 
   private void send() {
@@ -83,16 +85,16 @@ class Distance extends Panel {
     nodes = new Node[nbNodes];
     angle = -PI / 2; // first node on top at 12 o'clock
     // calculate the maximum size of the nodes circle according to the resolution of the panel
-    if (w > h) {
-      radius = (h - h / 5) / 2;
+    if (panelW > panelH) {
+      radius = (panelH - panelH / 5) / 2;
     } else {
-      radius = (w - w / 5) / 2;
+      radius = (panelW - panelW / 5) / 2;
     }
     // dispatch the nodes on a circle
     for (int i = 0; i < nbNodes; i++) {
       float posX = cos(angle) * radius;
       float posY = sin(angle) * radius;
-      nodes[i] = new Node(i, posX + w / 2, posY + h / 2);
+      nodes[i] = new Node(i, posX + panelW / 2, posY + panelH / 2);
       angle += TWO_PI / nbNodes;
     }
     // determinate the value from which a node equal to zero
@@ -121,16 +123,16 @@ class Distance extends Panel {
 
   private void noiseMode() {
     cursor();
-    if (dist(cursorX, cursorY, w / 2, h / 2) < radius) {
+    if (dist(cursorX, cursorY, panelW / 2, panelH / 2) < radius) {
       cursorX += noise(inc) * speed * 2 - speed;
       cursorY += noise(inc + 100) * speed * 2 - speed;
     } else {
-      if (cursorX > w / 2) {
+      if (cursorX > panelW / 2) {
         cursorX -= noise(inc) * speed * 2;
       } else {
         cursorX += noise(inc) * speed * 2;
       }
-      if (cursorY > h / 2) {
+      if (cursorY > panelH / 2) {
         cursorY -= noise(inc) * speed * 2;
       } else {
         cursorY += noise(inc) * speed * 2;
@@ -143,35 +145,35 @@ class Distance extends Panel {
     cursor();
     signalA = sin(radians(freqA * frameCount + phaseA));
     signalB = cos(radians(freqB * frameCount + phaseB));
-    cursorX = signalA * radius + w / 2;
-    cursorY = signalB * radius + h / 2;
+    cursorX = signalA * radius + panelW / 2;
+    cursorY = signalB * radius + panelH / 2;
   }
 
   void instructions() {
     textSize(10);
     fill(fg);
     if (mode == "noise") {
-      text("energy = " + round(speed*10), 10, h - 55);
-      text("chaos = " + round(step*100), 10, h - 40);
-      text("increase/decrease energy : press i/d", 10, h - 25);
-      text("increase/decrease chaos : press -/+", 10, h - 10);
+      text("energy = " + round(speed*10), 10, panelH - 55);
+      text("chaos = " + round(step*100), 10, panelH - 40);
+      text("increase/decrease energy : press i/d", 10, panelH - 25);
+      text("increase/decrease chaos : press -/+", 10, panelH - 10);
     }
     if (mode == "lissajous") {
-      text("phaseA = " + phaseA, 10, h - 100);
-      text("phaseB = " + phaseB, 10, h - 85);
-      text("freqA = " + round(freqA*100), 10, h - 70);
-      text("freqB = " + round(freqB*100), 10, h - 55);
-      text("increase/decrease phases : press arrows", 10, h - 40);
-      text("increase/decrease freqA : press i/d", 10, h - 25);
-      text("increase/decrease freqB : press -/+", 10, h - 10);
+      text("phaseA = " + phaseA, 10, panelH - 100);
+      text("phaseB = " + phaseB, 10, panelH - 85);
+      text("freqA = " + round(freqA*100), 10, panelH - 70);
+      text("freqB = " + round(freqB*100), 10, panelH - 55);
+      text("increase/decrease phases : press arrows", 10, panelH - 40);
+      text("increase/decrease freqA : press i/d", 10, panelH - 25);
+      text("increase/decrease freqB : press -/+", 10, panelH - 10);
     }
     push();
     textAlign(RIGHT);
-    text("add/remove node : press a/r", w - 10, h - 70);
-    text("change theme : press c", w - 10, h - 55);
-    text("lissajous mode : press l", w - 10, h - 40);
-    text("noise mode : press n", w - 10, h - 25);
-    text("mouse mode : press m", w - 10, h - 10);
+    text("add/remove node : press a/r", panelW - 10, panelH - 70);
+    text("change theme : press c", panelW - 10, panelH - 55);
+    text("lissajous mode : press l", panelW - 10, panelH - 40);
+    text("noise mode : press n", panelW - 10, panelH - 25);
+    text("mouse mode : press m", panelW - 10, panelH - 10);
     inc += step;
     pop();
   }
