@@ -16,5 +16,12 @@ void states(int state) {
   case 4 : 
     distance.run();
     break;
+  
+  case 5 : 
+    distance.run();
+    gate1.run();
+    gate2.run();
+    line.run();
+    break;
   }
 }
