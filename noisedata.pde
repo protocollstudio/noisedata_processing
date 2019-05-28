@@ -4,6 +4,8 @@ import oscP5.*;
 OscP5 osc;
 NetAddress remote;
 
+PFont font;
+
 Pointer c;
 int cellSize = 20;
 int state;
@@ -15,19 +17,21 @@ Distance distance;
 
 void setup() {
   // choisir des multiples de cellSize pour la résolution
-  size(1900, 1080);
+  //size(1920, 1080);
+  fullScreen();
   // 95 cellules de large
   // 54 cellules de hauteur
-
+  font = createFont("font.ttf", 12);
+  textFont(font);
   c = new Pointer();
   state = 4; // starting scene
   
   // Module(title, x position, y position, width, height)
-  line = new NoiseLine("noise1", 1, 2, 40, 30);
-  gate1 = new Ball("gate1", 1, 24, 10, 10);
-  gate2 = new Ball("gate2", 12, 14, 20, 10);
+  line = new NoiseLine("noise1", 80, 4, 20, 15);
+  gate1 = new Ball("gate1", 80, 22, 14, 14);
+  gate2 = new Ball("gate2", 80, 39, 25, 15);
   gate2.radius = 15; // radius of the Ball is public
-  distance = new Distance("drones", 5, 5, 60, 40);
+  distance = new Distance("drones", 2, 4, 50, 30);
 
 
   // OSC setup
