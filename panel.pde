@@ -22,6 +22,7 @@ class Panel {
       fill(40);
       rect(0, -20, w, 20);
       fill(255);
+      textSize(12);
       text(title, 5, -7);
    }
 }
