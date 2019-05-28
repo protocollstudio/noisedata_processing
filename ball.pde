@@ -1,11 +1,12 @@
 class Ball extends Panel {
+  
   PVector pos, vel;
   float radius = 10;
   private OscMessage m;
   private int hit;
 
   Ball(String title, float aX, float aY, float aW, float aH) {
-    super(title, aW, aY, aW, aH);
+    super(title, aX, aY, aW, aH);
     pos = new PVector(w/2, h/2);
     vel = new PVector(random(2, 6), random(2,6));
   }
@@ -15,7 +16,7 @@ class Ball extends Panel {
     send();
   }
 
-  void render() {
+  private void render() {
     push();
     display();
     noFill();

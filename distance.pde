@@ -20,7 +20,7 @@ class Distance extends Panel {
         // insert your sketch setup here 
         fg = 255;
         bg = 0;
-        nbNodes = 1;
+        nbNodes = 6;
         // calculate the maximum size of the nodes circle according to the resolution of the panel
         if (w > h) {
             radius = (h - h / 5) / 2;
