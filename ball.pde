@@ -20,7 +20,7 @@ class Ball extends Panel {
     push();
     display();
     noFill();
-    stroke(255);
+    stroke(fg);
     ellipseMode(CENTER);
     ellipse(pos.x, pos.y, radius*2, radius*2);
     hit = 0;
