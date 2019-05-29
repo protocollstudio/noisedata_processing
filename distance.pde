@@ -2,7 +2,6 @@ class Distance extends Panel {
 
   private OscMessage[] messages;
   // add global variables of your sketch here 
-  int fg, bg; // foreground and background colors
   int nbNodes;
   Node[] nodes;
   float radius, angle; // variables for creating nodes
@@ -17,16 +16,14 @@ class Distance extends Panel {
   Distance(String title, float aX, float aY, float aW, float aH) {
     super(title, aX, aY, aW, aH);
     // insert your sketch setup here 
-    fg = 255;
-    bg = 0;
-    nbNodes = 6;
+    nbNodes = 1;
     // initialize noise mode variables
     inc = 0;
     step = 0.10;
     speed = 1;
     // initialize lissajous mode variables
-    freqA = 1.2;
-    freqB = 1.5;
+    freqA = 0.2;
+    freqB = 0.5;
     phaseA = 0;
     phaseB = 0;
     // default mode
