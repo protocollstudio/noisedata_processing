@@ -43,6 +43,12 @@ void keyPressed() {
   if (key == '5') { 
     state = 5;
   }
+  if (key == '6') { 
+    state = 6;
+  }
+  if (key == '7') { 
+    state = 7;
+  }
 
   // distance parameters
   if (key == 'a' || key == 'A') {
