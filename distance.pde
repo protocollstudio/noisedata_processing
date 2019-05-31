@@ -4,11 +4,11 @@ class Distance extends Panel {
   private OscMessage[] messages;
   // add global variables of your sketch here
   int fg, bg; // foreground and background colors
-  int nbNodes;
-  Node[] nodes;
+  int nbNodes; // number of nodes
+  Node[] nodes; // nodes list
   float radius, angle; // variables for creating nodes
   private float longest; // maximum length between a node and cursor ot make it equal to zero
-  String mode;
+  String mode; // output modes : mouse, noise, lissajous
   float cursorX, cursorY; // position of the cursor
   float inc, step, speed; // noise mode variables
   // lissajous mode variable
@@ -44,8 +44,6 @@ class Distance extends Panel {
   }
 
   private void render() {
-
-    // insert your sketch draw function here
     ellipseMode(CENTER);
     modes(); // select between mouse/noise/lissajous modes
     for (int i = 0; i < nbNodes; i++) {
