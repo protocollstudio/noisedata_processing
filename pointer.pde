@@ -6,7 +6,7 @@ class Pointer {
     x = 0;
     y = 0;
   }
-  
+
   void display() {
     noStroke();
     fill(255, 100);

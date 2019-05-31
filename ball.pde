@@ -1,6 +1,6 @@
-// Module : bouncing ball 
+// Module : bouncing ball
 class Ball extends Panel {
-  
+
   PVector position, velocity;
   float radius = 10;
   private OscMessage oscMessage;
@@ -21,23 +21,23 @@ class Ball extends Panel {
   }
 
   private void render() {
-    
+
     // draw the ball
     noFill();
     stroke(255);
     ellipseMode(CENTER);
     ellipse(position.x, position.y, radius * 2, radius * 2);
     hit = 0;
-    
+
     // move the ball
     position.add(velocity);
-    
+
     // when it hits the border
     if (position.x - radius < 0 || position.x + radius > panelW) {
       hit = 1;
       velocity.x *= -1;
     }
-    if (position.y + radius > panelH || position.y - radius < 0) { 
+    if (position.y + radius > panelH || position.y - radius < 0) {
       hit = 1;
       velocity.y *= -1;
     }
@@ -47,6 +47,6 @@ class Ball extends Panel {
   private void send(int information) {
     oscMessage = new OscMessage(address);
     oscMessage.add(information);
-    osc.send(oscMessage, remote); 
+    osc.send(oscMessage, remote);
   }
 }

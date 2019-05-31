@@ -21,10 +21,10 @@ void setup() {
   //fullScreen();
   // 95 cellules de large
   // 54 cellules de hauteur
-  
+
   textFont(createFont("font.ttf", 20));
   c = new Pointer();
-  
+
   // Module(title, x position, y position, width, height)
   line1 = new Line("noise1", 2, 4, 30, 20);
   gate1 = new Ball("gate1", 2, 26, 30, 20);

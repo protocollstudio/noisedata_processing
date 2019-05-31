@@ -3,7 +3,7 @@ class Panel {
    float panelX, panelY, panelW, panelH; // origin of the window doesn't include the title bar.
    String title;
    String address; // osc address
-   
+
    Panel(String aTitle, float aX, float aY, float aW, float aH) {
      title = aTitle;
      // align panel to grid
@@ -13,15 +13,15 @@ class Panel {
      panelH = aH * cellSize;
      address = "/" + title; // use panel title to define osc address
    }
-   
+
    void display() {
-      // main box 
+      // main box
       noFill();
       stroke(240);
       translate(panelX, panelY);
       rect(0, 0, panelW, panelH);
-      
-      // title box 
+
+      // title box
       fill(40);
       rect(0, -20, panelW, 20);
       fill(255);

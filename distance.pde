@@ -1,8 +1,8 @@
-// Module : circular multi points at equal distances 
+// Module : circular multi points at equal distances
 class Distance extends Panel {
 
   private OscMessage[] messages;
-  // add global variables of your sketch here 
+  // add global variables of your sketch here
   int fg, bg; // foreground and background colors
   int nbNodes;
   Node[] nodes;
@@ -17,7 +17,7 @@ class Distance extends Panel {
 
   Distance(String title, float aX, float aY, float aW, float aH) {
     super(title, aX, aY, aW, aH);
-    // insert your sketch setup here 
+    // insert your sketch setup here
     fg = 255;
     bg = 0;
     nbNodes = 6;
