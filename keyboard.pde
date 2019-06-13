@@ -27,27 +27,27 @@ void keyPressed() {
   c.x = constrain(c.x, 0, width-cellSize);
   c.y = constrain(c.y, 0, height-cellSize);
 
-  // handle states
+  // handle scenes
   if (key == '1') { 
-    state = 1;
+    scene = 1;
   }
   if (key == '2') { 
-    state = 2;
+    scene = 2;
   }
   if (key == '3') { 
-    state = 3;
+    scene = 3;
   }
   if (key == '4') { 
-    state = 4;
+    scene = 4;
   }
   if (key == '5') { 
-    state = 5;
+    scene = 5;
   }
   if (key == '6') { 
-    state = 6;
+    scene = 6;
   }
   if (key == '7') { 
-    state = 7;
+    scene = 7;
   }
 
   // distance parameters
