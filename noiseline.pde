@@ -9,7 +9,7 @@ class Line extends Panel {
 
   Line(String title, float aX, float aY, float aW, float aH) {
     super(title, aX, aY, aW, aH);
-    nbPoints = 50;
+    nbPoints = 200;
     noiseFactor = 0;
     step = 0.02;
     noiseStart = 0;
