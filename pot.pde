@@ -10,23 +10,23 @@ class Pot extends Panel {
   Pot(String title, float x, float y, float w, float h) {
     super(title, x, y, w, h);
     // insert your sketch setup here
-    nbRotaries = 5;
+    nbRotaries = 6;
     rotaries = new Rotary[nbRotaries];
     for (int i = 0; i < nbRotaries; i++) {
-      rotaries[i] = new Rotary(i+2);
+      rotaries[i] = new Rotary(i+1);
     }
   }
 
   void run() {
     render();
-    // send();
+    send();
   }
 
   void render() {
     push();
     display();
     // insert your sketch draw function here
-    translate(50, 0);
+    translate(55, 0);
     for (int i = 0; i < nbRotaries; i++) {
       push();
       translate(i*60, h/2);
@@ -37,11 +37,9 @@ class Pot extends Panel {
   }
 
   void send() {
+    messages = new OscMessage[nbRotaries];
     for (int i = 0; i < nbRotaries; i++) {
-      // each node send an osc message on a different address based on node number
       messages[i] = new OscMessage("/pot" + i);
-      /* each message is a float between 0 and 1 proportional to the distance
-       between the node and the cursor */
       messages[i].add(rotaries[i].bang);
       osc.send(messages[i], remote);
     }
@@ -55,7 +53,7 @@ class Pot extends Panel {
 
     Rotary(float aSpeed) {
       speed = aSpeed;
-      angle = 0;
+      angle = (round(random(180)))*2;
       bang = 0;
     }
 
@@ -70,7 +68,8 @@ class Pot extends Panel {
 
     void display() {
       stroke(fg);
-      if (angle % 360 == 0) {
+      ellipse(0, -30, 5, 5);
+      if (angle % 360 >= 0 && angle % 360 <= 8) {
         fill(fg);
         bang = 1;
       } else {
