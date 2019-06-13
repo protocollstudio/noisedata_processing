@@ -76,6 +76,14 @@ class Distance extends Panel {
     }
   }
 
+  void setPosition(float aX, float aY, float aW, float aH) {
+    x = aX * cellSize;
+    y = aY * cellSize;
+    w = aW * cellSize;
+    h = aH * cellSize;
+    createNodes();
+  }
+
   void createNodes() {
     nodes = new Node[nbNodes];
     angle = -PI / 2; // first node on top at 12 o'clock
