@@ -28,4 +28,11 @@ class Panel {
       textSize(12);
       text(title, 5, -7);
    }
+
+  void setPosition(float aX, float aY, float aW, float aH) {
+     panelX = aX * cellSize;
+     panelY = aY * cellSize;
+     panelW = aW * cellSize;
+     panelH = aH * cellSize;
+  }
 }

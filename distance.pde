@@ -3,9 +3,9 @@ class Distance extends Panel {
 
   private OscMessage[] messages;
   // add global variables of your sketch here
-  int fg, bg; // foreground and background colors
   int nbNodes; // number of nodes
   Node[] nodes; // nodes list
+
   float radius, angle; // variables for creating nodes
   private float longest; // maximum length between a node and cursor ot make it equal to zero
   String mode; // output modes : mouse, noise, lissajous
@@ -17,17 +17,16 @@ class Distance extends Panel {
 
   Distance(String title, float aX, float aY, float aW, float aH) {
     super(title, aX, aY, aW, aH);
+
     // insert your sketch setup here
-    fg = 255;
-    bg = 0;
-    nbNodes = 6;
+    nbNodes = 1;
     // initialize noise mode variables
     inc = 0;
     step = 0.10;
     speed = 1;
     // initialize lissajous mode variables
-    freqA = 1.2;
-    freqB = 1.5;
+    freqA = 0.2;
+    freqB = 0.5;
     phaseA = 0;
     phaseB = 0;
     // default mode
@@ -77,6 +76,14 @@ class Distance extends Panel {
       messages[i].add(norm(nodes[i].value, 0, longest));
       osc.send(messages[i], remote);
     }
+  }
+
+  void setPosition(float aX, float aY, float aW, float aH) {
+    panelX = aX * cellSize;
+    panelY = aY * cellSize;
+    panelW = aW * cellSize;
+    panelH = aH * cellSize;
+    createNodes();
   }
 
   void createNodes() {
