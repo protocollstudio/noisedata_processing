@@ -1,0 +1,6 @@
+// scene handling
+
+class Scene {
+
+    
+}
