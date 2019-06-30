@@ -6,12 +6,13 @@ OscP5 osc;
 NetAddress remote;
 
 // Global
-int fg = 255;
-int bg = 0;
+// Appearance
+int fg = 255; // foreground color
+int bg = 0; // background color
 PFont font;
 
 Pointer c;
-int cellSize = 10;
+int cellSize = 10; // size of grid cells
 int scene;
 
 // Panel examples
@@ -22,8 +23,8 @@ Pot sequence;
 
 void setup() {
   // choisir des multiples de cellSize pour la résolution
-  size(1080, 720);
-  // fullScreen();
+  // size(1080, 720);
+  fullScreen();
   // 95 cellules de large
   // 54 cellules de hauteur
   font = createFont("font.ttf", 12);
@@ -60,7 +61,6 @@ void setup() {
 
 void draw() {
   background(0);
-  
   states(scene);
   //c.display();
 }
