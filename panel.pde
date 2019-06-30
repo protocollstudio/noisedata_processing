@@ -5,13 +5,13 @@ class Panel {
    String address; // osc address
    boolean isActive = true;
 
-   Panel(String aTitle, float aX, float aY, float aW, float aH) {
+   Panel(String aTitle, float aXcoord, float aYcoord, float aWidth, float aHeight) {
      title = aTitle;
      // align panel to grid
-     panelX = aX * cellSize;
-     panelY = aY * cellSize;
-     panelW = aW * cellSize;
-     panelH = aH * cellSize;
+     panelX = aXcoord * cellSize;
+     panelY = aYcoord * cellSize;
+     panelW = aWidth * cellSize;
+     panelH = aHeight * cellSize;
      address = "/" + title; // use panel title to define osc address
    }
 
@@ -30,10 +30,10 @@ class Panel {
       text(title, 5, -7);
    }
 
-  void setPosition(float aX, float aY, float aW, float aH) {
-     panelX = aX * cellSize;
-     panelY = aY * cellSize;
-     panelW = aW * cellSize;
-     panelH = aH * cellSize;
+  void setPosition(float aXcoord, float aYcoord, float aWidth, float aHeight) {
+     panelX = aXcoord * cellSize;
+     panelY = aYcoord * cellSize;
+     panelW = aWidth * cellSize;
+     panelH = aHeight * cellSize;
   }
 }
