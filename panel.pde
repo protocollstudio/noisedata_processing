@@ -3,6 +3,7 @@ class Panel {
    float panelX, panelY, panelW, panelH; // origin of the window doesn't include the title bar.
    String title;
    String address; // osc address
+   boolean isActive = true;
 
    Panel(String aTitle, float aX, float aY, float aW, float aH) {
      title = aTitle;
