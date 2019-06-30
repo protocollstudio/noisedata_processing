@@ -29,10 +29,10 @@ void setup() {
   // 54 cellules de hauteur
   font = createFont("font.ttf", 12);
   textFont(font);
-  
+
   c = new Pointer();
   scene = 1; // starting scene
-  
+
   // Module(title, x position, y position, width, height)
   line0 = new Line("LINE0", 2, 4, 25, 10);
   line0.step = 0.005;
@@ -43,16 +43,15 @@ void setup() {
   line3 = new Line("LINE3", 2, 43, 25, 10);
   line3.step = 0.07;
   gate0 = new Ball("GATE0", 2, 56, 15, 15);
-  gate0.vel = new PVector(0.7, 0.9);
+  gate0.velocity = new PVector(0.7, 0.9);
   gate1 = new Ball("GATE1", 18, 56, 15, 15);
-  gate1.vel = new PVector(1, -1.4);
+  gate1.velocity = new PVector(1, -1.4);
   gate2 = new Ball("GATE2", 34, 56, 15, 15);
-  gate2.vel = new PVector(-1.8, 1.5);
+  gate2.velocity = new PVector(-1.8, 1.5);
   gate3 = new Ball("GATE3", 50, 56, 15, 15);
-  gate3.vel = new PVector(-2, -2.5);
+  gate3.velocity = new PVector(-2, -2.5);
   distance = new Distance("NODES", 28, 4, 79, 49);
   sequence = new Pot("SEQUENCE", 66, 56, 41, 15);
-
 
   // OSC setup
   osc = new OscP5(this, 4444); // receive on port 4444
@@ -63,15 +62,4 @@ void draw() {
   background(0);
   states(scene);
   //c.display();
-}
-
-// useful
-void push() {
-  pushMatrix();
-  pushStyle();
-}
-
-void pop() {
-  popMatrix();
-  popStyle();
 }

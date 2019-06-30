@@ -29,7 +29,7 @@ class Pot extends Panel {
     translate(55, 0);
     for (int i = 0; i < nbRotaries; i++) {
       push();
-      translate(i*60, h/2);
+      translate(i*60, panelH/2);
       rotaries[i].run();
       pop();
     }
