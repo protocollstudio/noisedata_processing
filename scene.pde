@@ -12,7 +12,7 @@ class Scene {
         panels = new ArrayList<Panel>();
     }
 
-    addPanel(String aName, String aPanelType) {
+    void addPanel(String aName, String aPanelType) {
        Panel panel;
        switch (aPanelType) {
            case "ball" : panel = new Ball(aName, 2, 2, 15, 15);
@@ -23,4 +23,9 @@ class Scene {
        panels.add(panel);
     }
 
+    void display() {
+        for (int i = 0; i < panels.length() {
+            panels[i].run();
+        }
+    }
 }
