@@ -1,3 +1,5 @@
 out
 .vscode
 modules/distance/out
+.DS_Store
+states.pde
