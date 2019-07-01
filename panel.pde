@@ -1,5 +1,5 @@
 // display a panel
-class Panel {
+abstract class Panel {
    float panelX, panelY, panelW, panelH; // origin of the window doesn't include the title bar.
    String title;
    String address; // osc address
@@ -36,4 +36,6 @@ class Panel {
      panelW = aWidth * cellSize;
      panelH = aHeight * cellSize;
   }
+  
+  public abstract void run();
 }

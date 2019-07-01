@@ -6,10 +6,10 @@
 // TODO user can delete a scene
 
 class Scene {
-    ArrayList<Panel> panels;
+    ArrayList<Panel> panelList;
 
     Scene() {
-        panels = new ArrayList<Panel>();
+        panelList = new ArrayList<Panel>();
     }
 
     void addPanel(String aName, String aPanelType) {
@@ -19,13 +19,15 @@ class Scene {
            case "distance" : panel = new Distance(aName, 2, 2, 70, 40);
            case "line" : panel = new Line(aName, 2, 2, 25, 10);
            case "pot" : panel = new Pot(aName, 2, 2, 41, 15);
+           default: panel = new Ball(aName, 2, 2, 15, 15); 
        }
-       panels.add(panel);
+       panelList.add(panel);
     }
 
     void display() {
-        for (int i = 0; i < panels.length() {
-            panels[i].run();
+        //  for (type A: B) -> s'applique à tous les élément de la liste
+        for (Panel panel: panelList) {
+            panel.run();
         }
     }
 }
