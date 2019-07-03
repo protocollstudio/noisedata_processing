@@ -1,5 +1,5 @@
 // Module : bouncing ball
-class Ball extends Panel {
+class Ball extends Module {
 
 
   // ******************** ---------- *******************
@@ -41,15 +41,7 @@ class Ball extends Panel {
   // ******************** FUNCTIONS *******************
   // ******************** --------- *******************
 
-  void run() {
-    push();
-    display();
-    render();
-    pop();
-    send();
-  }
-
-  private void render() {
+  void render() {
     hit = 0;
 
     // move the ball
@@ -74,7 +66,7 @@ class Ball extends Panel {
   }
 
   // ... to be abstracted in OSC layer
-  private void send() {
+  void send() {
     oscMessage = new OscMessage(address);
     oscMessage.add(hit);
     osc.send(oscMessage, remote);

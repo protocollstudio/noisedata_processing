@@ -1,5 +1,5 @@
 // Module : random value
-class Line extends Panel {
+class Line extends Module {
 
 
   // ******************** ---------- *******************
@@ -39,15 +39,7 @@ class Line extends Panel {
   // ******************** FUNCTIONS *******************
   // ******************** --------- *******************
 
-  void run() {
-    push();
-    display();
-    render();
-    pop();
-    send();
-  }
-
-  private void render() {
+  void render() {
     stroke(255);
     noFill();
     for (int i = 0; i < nbPoints; i++) {
@@ -70,7 +62,7 @@ class Line extends Panel {
   }
 
   // ... to be abstracted in OSC layer
-  private void send() {
+  void send() {
     oscMessage = new OscMessage(address);
     oscMessage.add(map(noiseCurve[nbPoints-1], 0, panelH, 1, 0));
     osc.send(oscMessage, remote);

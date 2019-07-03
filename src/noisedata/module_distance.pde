@@ -1,5 +1,5 @@
 // Module : circular multi points at equal distances
-class Distance extends Panel {
+class Distance extends Module {
 
 
   // ******************** ---------- *******************
@@ -68,15 +68,7 @@ class Distance extends Panel {
   // ******************** FUNCTIONS *******************
   // ******************** --------- *******************
 
-  void run() {
-    push();
-    display();
-    render();
-    pop();
-    send();
-  }
-
-  private void render() {
+  void render() {
     ellipseMode(CENTER);
     selectMode(); // select between mouse/noise/lissajous modes
     for (int i = 0; i < nbNodes; i++) {
@@ -101,7 +93,7 @@ class Distance extends Panel {
     instructions();
   }
 
-  private void send() {
+  void send() {
     for (int i = 0; i < nbNodes; i++) {
       // each node send an osc message on a different address based on node number
       messages[i] = new OscMessage("/node" + i);

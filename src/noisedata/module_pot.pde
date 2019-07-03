@@ -1,4 +1,4 @@
-class Pot extends Panel {
+class Pot extends Module {
 
 
   // ******************** ---------- *******************
@@ -38,14 +38,6 @@ class Pot extends Panel {
   // ******************** --------- *******************
   // ******************** FUNCTIONS *******************
   // ******************** --------- *******************
-
-  void run() {
-    push();
-    display();
-    render();
-    pop();
-    send();
-  }
 
   void render() {
     translate(55, 0);
