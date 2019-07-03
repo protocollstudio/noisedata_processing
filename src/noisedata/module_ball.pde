@@ -1,11 +1,21 @@
 // Module : bouncing ball
 class Ball extends Panel {
 
-  PVector position, velocity;
 
+  // ******************** ---------- *******************
+  // ******************** PROPERTIES *******************
+  // ******************** ---------- *******************
+
+  PVector position, velocity;
   float radius = 10;
+
   private OscMessage oscMessage;
   private int hit;
+
+
+  // ******************** ------------ *******************
+  // ******************** CONSTRUCTORS *******************
+  // ******************** ------------ *******************
 
   Ball(String title, float aX, float aY, float aW, float aH) {
     super(title, aX, aY, aW, aH);
@@ -14,12 +24,29 @@ class Ball extends Panel {
     velocity = new PVector(random(2, 6), random(2,6));
   }
 
+
+  // ******************** ----------------- *******************
+  // ******************** GETTERS / SETTERS *******************
+  // ******************** ----------------- *******************
+
+  public float getRadius() {
+    return radius;
+  }
+  public void setRadius(float aRadius) {
+    radius = aRadius;
+  }
+
+
+  // ******************** --------- *******************
+  // ******************** FUNCTIONS *******************
+  // ******************** --------- *******************
+
   void run() {
     push();
     display();
     render();
     pop();
-    send(hit);
+    send();
   }
 
   private void render() {
@@ -47,9 +74,9 @@ class Ball extends Panel {
   }
 
   // ... to be abstracted in OSC layer
-  private void send(int information) {
+  private void send() {
     oscMessage = new OscMessage(address);
-    oscMessage.add(information);
+    oscMessage.add(hit);
     osc.send(oscMessage, remote);
   }
 

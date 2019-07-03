@@ -1,6 +1,11 @@
 // Module : circular multi points at equal distances
 class Distance extends Panel {
 
+
+  // ******************** ---------- *******************
+  // ******************** PROPERTIES *******************
+  // ******************** ---------- *******************
+
   private OscMessage[] messages;
   private int nbNodes; // number of nodes
   private Node[] nodes; // nodes list
@@ -13,6 +18,10 @@ class Distance extends Panel {
   float inc, step, speed; // noise mode variables
   float freqA, freqB, signalA, signalB, phaseA, phaseB; // lissajous mode variable
 
+
+  // ******************** ------------ *******************
+  // ******************** CONSTRUCTORS *******************
+  // ******************** ------------ *******************
 
   Distance(String title, float aX, float aY, float aW, float aH) {
     super(title, aX, aY, aW, aH);
@@ -69,7 +78,7 @@ class Distance extends Panel {
 
   private void render() {
     ellipseMode(CENTER);
-    modes(); // select between mouse/noise/lissajous modes
+    selectMode(); // select between mouse/noise/lissajous modes
     for (int i = 0; i < nbNodes; i++) {
       stroke(fg);
       line(nodes[i].x, nodes[i].y, cursorX, cursorY); //display lines
@@ -133,7 +142,7 @@ class Distance extends Panel {
     messages = new OscMessage[nbNodes];
   }
 
-  private void modes() {
+  private void selectMode() {
     if (mode == "mouse") {
       mouseMode();
     }

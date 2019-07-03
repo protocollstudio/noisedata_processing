@@ -1,9 +1,20 @@
 // display a panel
 abstract class Panel {
+
+
+  // ******************** ---------- *******************
+  // ******************** PROPERTIES *******************
+  // ******************** ---------- *******************
+
    float panelX, panelY, panelW, panelH; // origin of the window doesn't include the title bar.
    String title;
    String address; // osc address
    boolean isActive = true;
+
+
+  // ******************** ------------ *******************
+  // ******************** CONSTRUCTORS *******************
+  // ******************** ------------ *******************
 
    Panel(String aTitle, float aXcoord, float aYcoord, float aWidth, float aHeight) {
      title = aTitle;
@@ -14,6 +25,11 @@ abstract class Panel {
      panelH = aHeight * cellSize;
      address = "/" + title; // use panel title to define osc address
    }
+
+
+  // ******************** --------- *******************
+  // ******************** FUNCTIONS *******************
+  // ******************** --------- *******************
 
    void display() {
       // main box
@@ -36,6 +52,6 @@ abstract class Panel {
      panelW = aWidth * cellSize;
      panelH = aHeight * cellSize;
   }
-  
+
   public abstract void run();
 }

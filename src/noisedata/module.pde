@@ -1,18 +1,26 @@
-// empty example module
-class Module extends Panel{
+// Base Module Class
+abstract class Module extends Panel {
 
-  String address;
-  private OscMessage m; // OR private OscMessage[] messages
 
- // add global variables of your sketch here
+  // ******************** ---------- *******************
+  // ******************** PROPERTIES *******************
+  // ******************** ---------- *******************
+
+
+
+  // ******************** ------------ *******************
+  // ******************** CONSTRUCTORS *******************
+  // ******************** ------------ *******************
 
   Module(String title, float x, float y, float w, float h) {
     super(title, x, y, w, h);
-  
-   // insert your sketch setup here
-
   }
-  
+
+
+  // ******************** --------- *******************
+  // ******************** FUNCTIONS *******************
+  // ******************** --------- *******************
+
   void run() {
     push();
     display();
@@ -21,13 +29,8 @@ class Module extends Panel{
     send();
   }
 
-  void render() {
-   // insert your sketch draw function here
-  }
+  public abstract void render();
 
-  void send() {
-    m = new OscMessage(address);
-    m.add();
-    osc.send(m, remote);
-  }
+  public abstract void send();
+
 }

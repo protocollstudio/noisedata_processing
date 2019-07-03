@@ -6,11 +6,27 @@
 // TODO user can delete a scene
 
 class Scene {
+
+
+  // ******************** ---------- *******************
+  // ******************** PROPERTIES *******************
+  // ******************** ---------- *******************
+
     ArrayList<Panel> panelList;
+
+
+  // ******************** ------------ *******************
+  // ******************** CONSTRUCTORS *******************
+  // ******************** ------------ *******************
 
     Scene() {
         panelList = new ArrayList<Panel>();
     }
+
+
+  // ******************** --------- *******************
+  // ******************** FUNCTIONS *******************
+  // ******************** --------- *******************
 
     void addPanel(String aName, String aPanelType) {
        Panel panel;
@@ -19,7 +35,7 @@ class Scene {
            case "distance" : panel = new Distance(aName, 2, 2, 70, 40);
            case "line" : panel = new Line(aName, 2, 2, 25, 10);
            case "pot" : panel = new Pot(aName, 2, 2, 41, 15);
-           default: panel = new Ball(aName, 2, 2, 15, 15); 
+           default: panel = new Ball(aName, 2, 2, 15, 15);
        }
        panelList.add(panel);
     }
