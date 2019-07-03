@@ -27,7 +27,7 @@ void setup() {
   fullScreen();
   // 95 cellules de large
   // 54 cellules de hauteur
-  font = createFont("../../font/inconsolata.ttf", 12);
+  font = createFont("font.ttf", 12);
   textFont(font);
 
   c = new Pointer();
