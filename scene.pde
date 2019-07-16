@@ -23,9 +23,10 @@ class Scene {
        panels.add(panel);
     }
 
-    void display() {
+    void run() {
         for (int i = 0; i < panels.length() {
             panels[i].run();
+            // TODO only one panel must be active
         }
     }
 }
