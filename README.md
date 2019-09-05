@@ -101,7 +101,30 @@ By default there are 7 scenes declared, you can access each of them with the num
 - Gate 2
 - Gate 3
 
-### OSC messages
+### How to use 
+
+#### With ableton
+##### TODO Make a video tutoriel
+Launch noise:data
+Launch Ableton 
+Add a midi track
+Select the midi track 
+You will need to download the Ableton Connection Kit (url)
+Once you've unzip all the files go to **OSC TouchOSC**
+Double click on **OSC TouchOSC.amxd**  the module should appear in ableton on your midi track
+Add a instrument on the midi track
+**On OSC TouchOSC module : **
+Change the port number to 7777
+Click on **Learn** on the OSC TouchOSC
+Some osc msg should be received (ex : LINE0 0.5 ) unclikc the learn button after that
+Click on map on the same line you've "learned" and select a knob you would like to modify on the instrument (the pan for example)
+The knob values should automaticly adapt to the osc message
+You're DONE :D
+
+
+##### Demo file
+We've setup a demo file to show how noise:data can be interfaced with ableton
+Download this project file
 
 
 
