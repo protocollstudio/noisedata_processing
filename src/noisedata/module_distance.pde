@@ -23,8 +23,8 @@ class Distance extends Module {
   // ******************** CONSTRUCTORS *******************
   // ******************** ------------ *******************
 
-  Distance(String title, float aX, float aY, float aW, float aH) {
-    super(title, aX, aY, aW, aH);
+  Distance(String aTitle, float aX, float aY, float aW, float aH) {
+    super(aTitle, aX, aY, aW, aH);
 
     nbNodes = 1;
 
@@ -96,7 +96,7 @@ class Distance extends Module {
   void send() {
     for (int i = 0; i < nbNodes; i++) {
       // each node send an osc message on a different address based on node number
-      messages[i] = new OscMessage("/node" + i);
+      messages[i] = new OscMessage("/NODE" + i);
       /* each message is a float between 0 and 1 proportional to the distance
        between the node and the cursor */
       messages[i].add(norm(nodes[i].value, 0, longest));
