@@ -27,10 +27,17 @@ Each module sends OSC on its own way visualized graphicly in a minimal esthetic
 
 ## The Modules
 
-### Lines :
-lines cant be controlled (for now)
-Each line module will send some kind of noise trough OSC 
+Each module send a OSC message. There are two types of messages : bangs and waves.
+A trigger is a value switching from zero to one. It's an integer value.
+A wave is a continuous signal ranging from zero to one. It's a float value.
 
+### Lines :
+lines can't be controlled (for now)
+Each line module send a continuous signal.
+The OSC messages are :
+- /LINE0 value
+- /LINE1 value
+etc.
 
 ### Gate :
 A ball bounces on every side of the module when the ball collides with one of those side a bang message is sent (1 or true)
