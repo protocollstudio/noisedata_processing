@@ -54,7 +54,7 @@ class Pot extends Module {
   void send() {
     messages = new OscMessage[nbRotaries];
     for (int i = 0; i < nbRotaries; i++) {
-      messages[i] = new OscMessage("/pot" + i);
+      messages[i] = new OscMessage("/POT" + i);
       messages[i].add(rotaries[i].bang);
       osc.send(messages[i], remote);
     }
