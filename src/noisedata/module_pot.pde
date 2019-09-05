@@ -1,39 +1,54 @@
-class Pot extends Panel {
+class Pot extends Module {
+
+
+  // ******************** ---------- *******************
+  // ******************** PROPERTIES *******************
+  // ******************** ---------- *******************
+
   int nbRotaries;
   Rotary[] rotaries;
 
   String address;
   private OscMessage[] messages;
-  // add global variables of your sketch here 
 
+
+  // ******************** ------------ *******************
+  // ******************** CONSTRUCTORS *******************
+  // ******************** ------------ *******************
 
   Pot(String title, float x, float y, float w, float h) {
     super(title, x, y, w, h);
-    // insert your sketch setup here
+
     nbRotaries = 6;
     rotaries = new Rotary[nbRotaries];
+
     for (int i = 0; i < nbRotaries; i++) {
       rotaries[i] = new Rotary(i+1);
     }
   }
 
-  void run() {
-    render();
-    send();
-  }
+
+  // ******************** ----------------- *******************
+  // ******************** GETTERS / SETTERS *******************
+  // ******************** ----------------- *******************
+
+
+
+
+  // ******************** --------- *******************
+  // ******************** FUNCTIONS *******************
+  // ******************** --------- *******************
 
   void render() {
-    push();
-    display();
-    // insert your sketch draw function here
     translate(55, 0);
+
     for (int i = 0; i < nbRotaries; i++) {
       push();
       translate(i*60, panelH/2);
       rotaries[i].run();
       pop();
     }
-    pop();
+
   }
 
   void send() {
@@ -49,7 +64,6 @@ class Pot extends Panel {
     private float angle;
     private float speed;
     int bang;
-
 
     Rotary(float aSpeed) {
       speed = aSpeed;
@@ -82,7 +96,7 @@ class Pot extends Panel {
       rect(-2, -20, 4, 12);
       noStroke();
       fill(0);
-      rect(-1, -22, 2, 4); 
+      rect(-1, -22, 2, 4);
       pop();
     }
   }

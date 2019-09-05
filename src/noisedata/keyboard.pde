@@ -53,12 +53,10 @@ void keyPressed() {
   // distance parameters
   if (key == 'a' || key == 'A') {
     println("A key. Nodes = " + distance.nbNodes);
-    distance.nbNodes++;
-    distance.createNodes();
+    distance.addNode();
   }
   if (key == 'r' || key =='R') {
-    distance.nbNodes--;
-    distance.createNodes();
+    distance.removeNode();
   }
   if (key == 'm' || key == 'M') {
     distance.mode = "mouse";

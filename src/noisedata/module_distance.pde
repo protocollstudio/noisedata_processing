@@ -1,50 +1,76 @@
 // Module : circular multi points at equal distances
-class Distance extends Panel {
+class Distance extends Module {
+
+
+  // ******************** ---------- *******************
+  // ******************** PROPERTIES *******************
+  // ******************** ---------- *******************
 
   private OscMessage[] messages;
-  // add global variables of your sketch here
-  int nbNodes; // number of nodes
-  Node[] nodes; // nodes list
+  private int nbNodes; // number of nodes
+  private Node[] nodes; // nodes list
+  private int nodeNumberLimit = 100; // limit for nodes number
 
   float radius, angle; // variables for creating nodes
   private float longest; // maximum length between a node and cursor ot make it equal to zero
   String mode; // output modes : mouse, noise, lissajous
   float cursorX, cursorY; // position of the cursor
   float inc, step, speed; // noise mode variables
-  // lissajous mode variable
-  float freqA, freqB, signalA, signalB, phaseA, phaseB;
+  float freqA, freqB, signalA, signalB, phaseA, phaseB; // lissajous mode variable
 
+
+  // ******************** ------------ *******************
+  // ******************** CONSTRUCTORS *******************
+  // ******************** ------------ *******************
 
   Distance(String title, float aX, float aY, float aW, float aH) {
     super(title, aX, aY, aW, aH);
 
-    // insert your sketch setup here
     nbNodes = 1;
+
     // initialize noise mode variables
     inc = 0;
     step = 0.10;
     speed = 1;
+
     // initialize lissajous mode variables
     freqA = 0.2;
     freqB = 0.5;
     phaseA = 0;
     phaseB = 0;
+
     // default mode
     mode = "mouse";
     createNodes();
   }
 
-  void run() {
-    push();
-    display();
-    render();
-    pop();
-    send();
+
+  // ******************** ----------------- *******************
+  // ******************** GETTERS / SETTERS *******************
+  // ******************** ----------------- *******************
+
+  public int getNbNodes() {
+    return nbNodes;
+  }
+  public void setNbNodes(int aNbNodes) {
+    nbNodes = aNbNodes;
+  }
+  public String getMode() {
+    return mode;
+  }
+  public void setMode(String aMode) {
+    mode = aMode;
   }
 
-  private void render() {
+
+
+  // ******************** --------- *******************
+  // ******************** FUNCTIONS *******************
+  // ******************** --------- *******************
+
+  void render() {
     ellipseMode(CENTER);
-    modes(); // select between mouse/noise/lissajous modes
+    selectMode(); // select between mouse/noise/lissajous modes
     for (int i = 0; i < nbNodes; i++) {
       stroke(fg);
       line(nodes[i].x, nodes[i].y, cursorX, cursorY); //display lines
@@ -67,7 +93,7 @@ class Distance extends Panel {
     instructions();
   }
 
-  private void send() {
+  void send() {
     for (int i = 0; i < nbNodes; i++) {
       // each node send an osc message on a different address based on node number
       messages[i] = new OscMessage("/node" + i);
@@ -108,7 +134,7 @@ class Distance extends Panel {
     messages = new OscMessage[nbNodes];
   }
 
-  private void modes() {
+  private void selectMode() {
     if (mode == "mouse") {
       mouseMode();
     }
@@ -182,6 +208,24 @@ class Distance extends Panel {
     inc += step;
     pop();
   }
+
+
+  public void addNode() {
+    if (nbNodes < nodeNumberLimit) {
+      nbNodes++;
+      distance.createNodes();
+    }
+  }
+
+  public void removeNode() {
+    if (nbNodes <= 1) {
+      return;
+    }
+    nbNodes--;
+    distance.createNodes();
+  }
+
+
 
   class Node {
     float x, y, value;

@@ -1,5 +1,10 @@
 // Module : random value
-class Line extends Panel {
+class Line extends Module {
+
+
+  // ******************** ---------- *******************
+  // ******************** PROPERTIES *******************
+  // ******************** ---------- *******************
 
   int nbPoints = 100;
   float noiseFactor = 0;
@@ -7,6 +12,11 @@ class Line extends Panel {
   float noiseStart = 0;
   private int[] noiseCurve = new int[nbPoints];
   private OscMessage oscMessage;
+
+
+  // ******************** ------------ *******************
+  // ******************** CONSTRUCTORS *******************
+  // ******************** ------------ *******************
 
   Line(String title, float aX, float aY, float aW, float aH) {
     super(title, aX, aY, aW, aH);
@@ -17,15 +27,19 @@ class Line extends Panel {
     noiseCurve = new int[nbPoints];
   }
 
-  void run() {
-    push();
-    display();
-    render();
-    pop();
-    send(map(noiseCurve[nbPoints-1], 0, panelH, 1, 0));
-  }
 
-  private void render() {
+  // ******************** ----------------- *******************
+  // ******************** GETTERS / SETTERS *******************
+  // ******************** ----------------- *******************
+
+
+
+
+  // ******************** --------- *******************
+  // ******************** FUNCTIONS *******************
+  // ******************** --------- *******************
+
+  void render() {
     stroke(255);
     noFill();
     for (int i = 0; i < nbPoints; i++) {
@@ -48,9 +62,9 @@ class Line extends Panel {
   }
 
   // ... to be abstracted in OSC layer
-  private void send(float information) {
+  void send() {
     oscMessage = new OscMessage(address);
-    oscMessage.add(information);
+    oscMessage.add(map(noiseCurve[nbPoints-1], 0, panelH, 1, 0));
     osc.send(oscMessage, remote);
   }
 }
