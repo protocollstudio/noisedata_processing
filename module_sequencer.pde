@@ -1,4 +1,4 @@
-class Pot extends Module {
+class Sequencer extends Module {
 
 
   // ******************** ---------- *******************
@@ -16,7 +16,7 @@ class Pot extends Module {
   // ******************** CONSTRUCTORS *******************
   // ******************** ------------ *******************
 
-  Pot(String title, float x, float y, float w, float h) {
+  Sequencer(String title, float x, float y, float w, float h) {
     super(title, x, y, w, h);
 
     nbRotaries = 6;
