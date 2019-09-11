@@ -16,7 +16,7 @@ GATE send a bang (a variable which pass from zero to one) when the ball hit the 
 
 SEQUENCER send a bang each time a rotary is at twelve o'clock.
 
-NODES send a array of continuous signals between 0 and 1, as much as there are nodes (follow the displayed instructions).
+NODES send a bunch of continuous signals between 0 and 1, as much as there are nodes (follow the displayed instructions).
 
 ## Best practices
 1. Create your sketch outside of noise_data. 
