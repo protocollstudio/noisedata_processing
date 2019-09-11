@@ -2,7 +2,8 @@
 Collection of OSC graphics modules.
 
 ## Requirements
-- OscP5 (processing library)
+- [Processing](https://processing.org/)
+- OscP5 (processing library). To download it : Tools > Add a tool
 
 ## Usage
 Each module send an osc message at the address /panelName between 0 and 1.
