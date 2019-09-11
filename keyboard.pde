@@ -1,11 +1,17 @@
 void keyPressed() {
   
+  // display help window
   if (key == 'h' || key == 'H') {
     if (helpIsActive == false) {
        helpIsActive = true; 
     } else {
       helpIsActive = false;
     }
+  }
+
+  // change theme
+  if (key == 'c' || key == 'C') {
+    changeTheme();
   }
   
   // distance parameters
