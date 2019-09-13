@@ -14,7 +14,7 @@ void helpScreen() {
   text("SEQUENCER send bangs each time a rotary is at twelve o'clock on address /POTx (x is between 0 and 5)", 20, 170);
   text("Instructions of NODES are always displayed. Signal are continuous, between zero and one.\nThe addresses are /NODEx (x is the number of the node.", 20, 200);
   text("@protocollstudio", 20, 260);
-  text("Next steps : scene & window management, modules & communication configuration", 20, 290);
+  text("Next steps : scene & window management, modules & communication configuration...", 20, 290);
   text("Press h to (un)display help screen.", 20, 540);
   text("Press c to change theme (dark/light mode)", 20, 570);
 
