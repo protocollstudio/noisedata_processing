@@ -1,6 +1,6 @@
 void keyPressed() {
   
-  // display help window
+  // display help screen
   if (key == 'h' || key == 'H') {
     if (helpIsActive == false) {
        helpIsActive = true; 
@@ -8,7 +8,7 @@ void keyPressed() {
       helpIsActive = false;
     }
   }
-
+ 
   // change theme
   if (key == 'c' || key == 'C') {
     changeTheme();

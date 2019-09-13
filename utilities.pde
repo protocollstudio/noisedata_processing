@@ -11,14 +11,11 @@ void pop() {
 }
 
 void changeTheme() {
-  if (fg = 255) {
+  if (fg == 255 && bg == 0) {
     fg = 0;
-  } else {
-    fg = 255;
-  }
-  if (bg = 0) {
     bg = 255;
   } else {
+    fg = 255;
     bg = 0;
   }
 }
