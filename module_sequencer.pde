@@ -1,4 +1,4 @@
-class Pot extends Module {
+class Sequencer extends Module {
 
 
   // ******************** ---------- *******************
@@ -16,14 +16,14 @@ class Pot extends Module {
   // ******************** CONSTRUCTORS *******************
   // ******************** ------------ *******************
 
-  Pot(String title, float x, float y, float w, float h) {
+  Sequencer(String title, float x, float y, float w, float h) {
     super(title, x, y, w, h);
 
     nbRotaries = 6;
     rotaries = new Rotary[nbRotaries];
 
     for (int i = 0; i < nbRotaries; i++) {
-      rotaries[i] = new Rotary(i+1);
+      rotaries[i] = new Rotary((i+1)*2);
     }
   }
 
@@ -54,7 +54,7 @@ class Pot extends Module {
   void send() {
     messages = new OscMessage[nbRotaries];
     for (int i = 0; i < nbRotaries; i++) {
-      messages[i] = new OscMessage("/pot" + i);
+      messages[i] = new OscMessage("/POT" + i);
       messages[i].add(rotaries[i].bang);
       osc.send(messages[i], remote);
     }
@@ -95,7 +95,7 @@ class Pot extends Module {
       ellipse(0, 0, 40, 40);
       rect(-2, -20, 4, 12);
       noStroke();
-      fill(0);
+      fill(bg);
       rect(-1, -22, 2, 4);
       pop();
     }

@@ -23,10 +23,10 @@ class Distance extends Module {
   // ******************** CONSTRUCTORS *******************
   // ******************** ------------ *******************
 
-  Distance(String title, float aX, float aY, float aW, float aH) {
-    super(title, aX, aY, aW, aH);
+  Distance(String aTitle, float aX, float aY, float aW, float aH) {
+    super(aTitle, aX, aY, aW, aH);
 
-    nbNodes = 1;
+    nbNodes = 5;
 
     // initialize noise mode variables
     inc = 0;
@@ -34,13 +34,13 @@ class Distance extends Module {
     speed = 1;
 
     // initialize lissajous mode variables
-    freqA = 0.2;
+    freqA = 0.6;
     freqB = 0.5;
     phaseA = 0;
     phaseB = 0;
 
     // default mode
-    mode = "mouse";
+    mode = "lissajous";
     createNodes();
   }
 
@@ -96,7 +96,7 @@ class Distance extends Module {
   void send() {
     for (int i = 0; i < nbNodes; i++) {
       // each node send an osc message on a different address based on node number
-      messages[i] = new OscMessage("/node" + i);
+      messages[i] = new OscMessage("/NODE" + i);
       /* each message is a float between 0 and 1 proportional to the distance
        between the node and the cursor */
       messages[i].add(norm(nodes[i].value, 0, longest));
@@ -199,9 +199,11 @@ class Distance extends Module {
       text("increase/decrease freqB : press -/+", 10, panelH - 10);
     }
     push();
+    textAlign(CENTER);
+    text("mode : " + mode, panelW / 2, panelH - 10);
     textAlign(RIGHT);
-    text("add/remove node : press a/r", panelW - 10, panelH - 70);
-    text("change theme : press c", panelW - 10, panelH - 55);
+    text("add/remove node : press a/r", panelW - 10, panelH - 55);
+    //text("change theme : press c", panelW - 10, panelH - 55);
     text("lissajous mode : press l", panelW - 10, panelH - 40);
     text("noise mode : press n", panelW - 10, panelH - 25);
     text("mouse mode : press m", panelW - 10, panelH - 10);

@@ -1,55 +1,19 @@
 void keyPressed() {
-  // cursore movement
-  if (key == 'h') { 
-    c.x -= cellSize;
+  
+  // display help screen
+  if (key == 'h' || key == 'H') {
+    if (helpIsActive == false) {
+       helpIsActive = true; 
+    } else {
+      helpIsActive = false;
+    }
   }
-  if (key == 'j') { 
-    c.y += cellSize;
+ 
+  // change theme
+  if (key == 'c' || key == 'C') {
+    changeTheme(); // in utilities.pde
   }
-  if (key == 'k') { 
-    c.y -= cellSize;
-  }
-  if (key == 'l') { 
-    c.x += cellSize;
-  }
-  //if (keyCode == UP) { 
-  //  c.y -= cellSize * 10;
-  //}
-  //if (keyCode == RIGHT) { 
-  //  c.x += cellSize * 10;
-  //}
-  //if (keyCode == DOWN) { 
-  //  c.y += cellSize * 10;
-  //}
-  //if (keyCode == LEFT) { 
-  //  c.x -= cellSize * 10;
-  //}
-  c.x = constrain(c.x, 0, width-cellSize);
-  c.y = constrain(c.y, 0, height-cellSize);
-
-  // handle scenes
-  if (key == '1') { 
-    scene = 1;
-  }
-  if (key == '2') { 
-    scene = 2;
-  }
-  if (key == '3') { 
-    scene = 3;
-  }
-  if (key == '4') { 
-    scene = 4;
-  }
-  if (key == '5') { 
-    scene = 5;
-  }
-  if (key == '6') { 
-    scene = 6;
-  }
-  if (key == '7') { 
-    scene = 7;
-  }
-
+  
   // distance parameters
   if (key == 'a' || key == 'A') {
     println("A key. Nodes = " + distance.nbNodes);

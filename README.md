@@ -2,16 +2,21 @@
 Collection of OSC graphics modules.
 
 ## Requirements
-- OscP5 (processing library)
+- [Processing](https://processing.org/)
+- OscP5 (processing library). To download it : Tools > Add a tool
 
 ## Usage
-Duplicate "Module" class to create another module.
+Each module send an osc message at the address /panelName between 0 and 1.
 
-### Scene managing
-- Copy example.states.pde 
-- Rename it states.pde
-- And modify it at your convenience
+Press h for help.
 
+LFO send a continuous signal between 0 and 1.
+
+GATE send a bang (a variable which pass from zero to one) when the ball hit the border.
+
+SEQUENCER send a bang each time a rotary is at twelve o'clock.
+
+NODES send a bunch of continuous signals between 0 and 1, as much as there are nodes (follow the displayed instructions).
 
 ## Best practices
 1. Create your sketch outside of noise_data. 

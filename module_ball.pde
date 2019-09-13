@@ -1,33 +1,29 @@
 // Module : bouncing ball
+
 class Ball extends Module {
-
-
-  // ******************** ---------- *******************
-  // ******************** PROPERTIES *******************
-  // ******************** ---------- *******************
+  
+  // PROPERTIES
 
   PVector position, velocity;
-  float radius = 10;
+  float radius = 15;
 
   private OscMessage oscMessage;
   private int hit;
 
+  // CONSTRUCTORS
 
-  // ******************** ------------ *******************
-  // ******************** CONSTRUCTORS *******************
-  // ******************** ------------ *******************
-
-  Ball(String title, float aX, float aY, float aW, float aH) {
+  Ball  (String title, 
+        float aX, 
+        float aY, 
+        float aW, 
+        float aH) {
+          
     super(title, aX, aY, aW, aH);
 
-    position = new PVector(panelW/2, panelH/2);
-    velocity = new PVector(random(2, 6), random(2,6));
+    position = new PVector(panelW / 2, panelH / 2);
+    velocity = new PVector(random(2, 6), random(2, 6));
   }
-
-
-  // ******************** ----------------- *******************
-  // ******************** GETTERS / SETTERS *******************
-  // ******************** ----------------- *******************
+  // GETTERS / SETTERS
 
   public float getRadius() {
     return radius;
@@ -37,9 +33,7 @@ class Ball extends Module {
   }
 
 
-  // ******************** --------- *******************
-  // ******************** FUNCTIONS *******************
-  // ******************** --------- *******************
+  // FUNCTIONS
 
   void render() {
     hit = 0;
@@ -62,7 +56,6 @@ class Ball extends Module {
     stroke(fg);
     ellipseMode(CENTER);
     ellipse(position.x, position.y, radius*2, radius*2);
-
   }
 
   // ... to be abstracted in OSC layer
@@ -77,7 +70,5 @@ class Ball extends Module {
     panelY = aY * cellSize;
     panelW = aW * cellSize;
     panelH = aH * cellSize;
-    //pos = new PVector(w/2, h/2);
-    //vel = new PVector(random(2, 6), random(2, 6));
   }
 }
