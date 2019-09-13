@@ -26,7 +26,7 @@ class Distance extends Module {
   Distance(String aTitle, float aX, float aY, float aW, float aH) {
     super(aTitle, aX, aY, aW, aH);
 
-    nbNodes = 1;
+    nbNodes = 5;
 
     // initialize noise mode variables
     inc = 0;
@@ -34,13 +34,13 @@ class Distance extends Module {
     speed = 1;
 
     // initialize lissajous mode variables
-    freqA = 0.2;
+    freqA = 0.6;
     freqB = 0.5;
     phaseA = 0;
     phaseB = 0;
 
     // default mode
-    mode = "mouse";
+    mode = "lissajous";
     createNodes();
   }
 

@@ -11,7 +11,7 @@ void keyPressed() {
  
   // change theme
   if (key == 'c' || key == 'C') {
-    changeTheme();
+    changeTheme(); // in utilities.pde
   }
   
   // distance parameters
