@@ -199,9 +199,11 @@ class Distance extends Module {
       text("increase/decrease freqB : press -/+", 10, panelH - 10);
     }
     push();
+    textAlign(CENTER);
+    text("mode : " + mode, panelW / 2, panelH - 10);
     textAlign(RIGHT);
-    text("add/remove node : press a/r", panelW - 10, panelH - 70);
-    text("change theme : press c", panelW - 10, panelH - 55);
+    text("add/remove node : press a/r", panelW - 10, panelH - 55);
+    //text("change theme : press c", panelW - 10, panelH - 55);
     text("lissajous mode : press l", panelW - 10, panelH - 40);
     text("noise mode : press n", panelW - 10, panelH - 25);
     text("mouse mode : press m", panelW - 10, panelH - 10);

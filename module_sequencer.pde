@@ -23,7 +23,7 @@ class Sequencer extends Module {
     rotaries = new Rotary[nbRotaries];
 
     for (int i = 0; i < nbRotaries; i++) {
-      rotaries[i] = new Rotary(i+1);
+      rotaries[i] = new Rotary((i+1)*2);
     }
   }
 
@@ -95,7 +95,7 @@ class Sequencer extends Module {
       ellipse(0, 0, 40, 40);
       rect(-2, -20, 4, 12);
       noStroke();
-      fill(0);
+      fill(bg);
       rect(-1, -22, 2, 4);
       pop();
     }
