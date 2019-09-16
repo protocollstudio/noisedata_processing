@@ -8,7 +8,7 @@ void helpScreen() {
   fill(fg);
   text("NOISE:DATA", 20, 30);
   textSize(14);
-  text("Each window send an OSC signal.", 20, 80);
+  text("Each window send an OSC signal on port 7777.", 20, 80);
   text("LFOs send a continuous signals between zero and one on address /LFOx (title of the window).", 20, 110);
   text("GATEs send a bang, a integer switching from zero to one, each time the ball hits the wall on address /GATEx.", 20, 140);
   text("SEQUENCER send bangs each time a rotary is at twelve o'clock on address /POTx (x is between 0 and 5)", 20, 170);
